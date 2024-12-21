@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Su İhtiyacı Hesaplama</title>
+    <style>
+        /* CSS Kodları */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('su-icecekleri.jpg'); /* Arka plan resmi */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5); /* Renk karartma */
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #sonuc {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML Kısmı -->
+    <div class="container">
+        <h1>Su İhtiyacı Hesaplama</h1>
+        <form id="su-hesaplama-form">
+            <label for="kilo">Lütfen kilonuzu kg cinsinde girin:</label>
+            <input type="number" id="kilo" name="kilo" placeholder="Örn: 70" required>
+            <button type="submit">Hesapla</button>
+        </form>
+        <p id="sonuc"></p>
+    </div>
+
+    <!-- JavaScript Kısmı -->
+    <script>
+        document.getElementById('su-hesaplama-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Sayfanın yenilenmesini önler
+            
+            var kilo = document.getElementById('kilo').value;
+            
+            if (kilo > 0) {
+                var su_ihtiyaci_ml = kilo * 35; // Kişinin günlük su ihtiyacı (ml)
+                document.getElementById('sonuc').textContent = `Günlük su ihtiyacınız: ${su_ihtiyaci_ml} ml`;
+            } else {
+                document.getElementById('sonuc').textContent = "Lütfen geçerli bir kilo girin!";
+            }
+        });
+    </script>
+</body>
+</html>
